@@ -1,11 +1,13 @@
 const http = require("http");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const headers = require("./corsHeader");
 const Post = require("./models/post");
 
-mongoose.connect("mongodb://localhost:27017/hotel").then(() => {
-  console.log("連線成功");
-});
+require("./connections");
+
+// mongoose.connect("mongodb://localhost:27017/hotel").then(() => {
+//   console.log("連線成功");
+// });
 
 const requestListener = async (req, res) => {
   const { url, method } = req;
