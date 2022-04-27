@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "0e624817-de1e-46be-b249-3397055fdb43",
+		"name": "NodeJS-week2-posts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "取得文章清單",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://still-journey-65153.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"still-journey-65153",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增文章",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"One Piece\",\n    \"content\": \"Fun story\",\n    \"type\": \"comics\",\n    \"tags\": [\"adventure\"],\n    \"likes\": 999,\n    \"comments\": 101\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://still-journey-65153.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"still-journey-65153",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
