@@ -90,6 +90,47 @@ const requestListener = async (req, res) => {
       })
     );
     res.end();
+  } else if (url.startsWith("/posts/") && method === "PATCH") {
+    req.on("end", async () => {
+      try {
+        const id = url.split("/").pop();
+        const data = JSON.parse(body);
+        const validKeyList = [
+          "name",
+          "content",
+          "type",
+          "tags",
+          "image",
+          "likes",
+          "comments",
+        ];
+        const updatData = {};
+        Object.keys(data).forEach((item) => {
+          if (validKeyList.includes(item)) {
+            updatData[item] = data[item];
+          }
+        });
+        const posts = await Post.findOneAndUpdate({ _id: id }, updatData);
+        res.writeHead(200, headers);
+        res.write(
+          JSON.stringify({
+            status: "success",
+            posts: posts,
+          })
+        );
+        res.end();
+      } catch (error) {
+        res.writeHead(400, headers);
+        res.write(
+          JSON.stringify({
+            status: "false",
+            message: "欄位有錯",
+            error,
+          })
+        );
+        res.end();
+      }
+    });
   } else if (method === "OPTION") {
     res.writeHead(200, headers);
     res.end();
